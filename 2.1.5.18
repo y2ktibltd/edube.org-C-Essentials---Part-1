@@ -1,3 +1,6 @@
+/*Cleaned up isLeapYear formula since the code they gave us in invalid.
+* This makes the March 1st 2016 answer shown in the excercise wrong*/
+
 #include <stdio.h>
 
 int isLeapYear(int year);
