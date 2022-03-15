@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+ 
+
+char* Getip()
+{
+    static char input_ip[15];
+    int i;
+    printf("Type an IP address: ");
+    scanf("%s",&input_ip);
+    if (strlen(input_ip)<7||strlen(input_ip)>15)
+        Getip();
+    for (i=0;i<strlen(input_ip);i++)
+    {
+        char c=input_ip[i];
+        if (isdigit(c)!=0||c=='.')
+            continue;
+        else
+            Getip();
+    }
+    return input_ip;
+}
+
+ 
+
+int main()
+{
+    char ip[15];
+    strcpy(ip,Getip());
+    printf("%s\n",ip);
+    printf("%d\n",strlen(ip));
+    return 0;
+}
