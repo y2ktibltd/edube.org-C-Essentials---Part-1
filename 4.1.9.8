@@ -12,7 +12,8 @@ char* Getip()
     if (strlen(input_ip)<7||strlen(input_ip)>15)
         {
         printf("Error: not a valid address:\n");
-        Getip();
+        exit(0);
+//        Getip();
         }
     for (i=0;i<strlen(input_ip);i++)
     {
@@ -27,20 +28,23 @@ char* Getip()
         else
             {
             printf("Error: not a valid address:\n");
-            Getip();
+            exit(0);
+//            Getip();
             }
     }
     if (j!=3)
     {
         printf("Error: not a valid address:\n");
-        Getip();
+        exit(0);
+//        Getip();
     }
     return input_ip;
 }
 
 int main()
 {
-    char ip[15],ip3[12],ip2[8],ip1[4];
+    char ip[16];
+    char *ip3,*ip2,*ip1;
     int i,j=0;
     strcpy(ip,Getip());
     for (i=0;i<strlen(ip);i++)
@@ -50,17 +54,17 @@ int main()
         {
             j++;
             if (j==1)
-                *ip3=ip[i];
+                ip3=&ip[i+1];
             if (j==2)
-                *ip2=ip[i];
+                ip2=&ip[i+1];
             if (j==3)
-                *ip1=ip[i];
+                ip1=&ip[i+1];
         }
     }
-    printf("%s\n",ip);
-    printf("%d\n",strlen(ip));
-    printf("%s\n",ip3);
-    printf("%s\n",ip2);
-    printf("%s\n",ip1);
+//    printf("%s\n",ip);
+//    printf("%d\n",strlen(ip));
+    printf("Last 3 parts: %s\n",ip3);
+    printf("Last 2 parts: %s\n",ip2);
+    printf("Last 1 parts: %s\n",ip1);
     return 0;
 }
